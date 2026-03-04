@@ -1,11 +1,11 @@
-import { Josefin_Sans } from "next/font/google";
+import { Onest } from "next/font/google";
 
-const headingFont = Josefin_Sans({
+const headingFont = Onest({
     subsets: ['latin'],
-    weight: ['700'],
+    weight: ['900'],
 })
 
-const bodyFont = Josefin_Sans({
+const bodyFont = Onest({
     subsets: ['latin'],
     weight: ['700'],
 })
@@ -13,7 +13,7 @@ const bodyFont = Josefin_Sans({
 export default function LandingPage() {
     return (
         <div className="flex w-full items-center justify-center">
-            <h1 className={`${bodyFont.className} text-black text-6xl text-center`}>The React Framework for the Web</h1>
+            <h1 className={`${bodyFont.className} text-black text-7xl text-center`}>The Best CC Transfer Guide on the Web</h1>
         </div>
     )
 }

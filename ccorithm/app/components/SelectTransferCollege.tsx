@@ -12,20 +12,18 @@ const bodyFont = Onest({
   weight: ["700"],
 });
 
-const majors = [
-  "Business",
-  "Computer Science",
-  "Engineering",
-  "Psychology",
-  "Nursing",
+const transferColleges = [
+  "University of California, Los Angeles (UCLA)",
+  "California State University, Long Beach (CSULB)",
+  "Stanford University",
 ];
 
-export default function SelectMajor() {
+export default function SelectTransferCollege() {
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
-  const filteredMajors = majors.filter((major) =>
-    major.toLowerCase().includes(query.toLowerCase()),
+  const filteredTransferColleges = transferColleges.filter((transferCollege) =>
+    transferCollege.toLowerCase().includes(query.toLowerCase()),
   );
 
   return (
@@ -33,7 +31,7 @@ export default function SelectMajor() {
       <h2
         className={`${bodyFont.className} flex text-center text-black text-xl mb-2`}
       >
-        Step 1: Select Your Major
+        Step 3: Select Transfer College
       </h2>
       <div className="relative">
         <input
@@ -49,17 +47,17 @@ export default function SelectMajor() {
         />
         {isOpen && query && (
           <div className="absolute top-full w-full border-black border-2 mt-1 z-50 rounded-xl">
-            {filteredMajors.length > 0 ? (
-              filteredMajors.map((major, index) => (
+            {filteredTransferColleges.length > 0 ? (
+              filteredTransferColleges.map((transferCollege, index) => (
                 <div
                   key={index}
                   onClick={() => {
-                    setQuery(major);
+                    setQuery(transferCollege);
                     setIsOpen(false);
                   }}
                   className="px-3 py-2 hover:bg-gray-300 cursor-pointer rounded-xl"
                 >
-                  {major}
+                  {transferCollege}
                 </div>
               ))
             ) : (
