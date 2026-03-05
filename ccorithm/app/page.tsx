@@ -10,7 +10,7 @@ export default function Home() {
         <div className="bg-blue-300 pb-100 p-10 w-full">
           <LandingPage />
           <div className="mt-10"></div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center w-full items-start">
+          <div className="gap-8 justify-center w-full items-start">
             <Form />
           </div>
           <div className="mt-10"></div>

@@ -48,7 +48,7 @@ export default function SelectTransferCollege({transfer, setTransfer}: Props) {
             setIsOpen(true);
           }}
           onFocus={() => setIsOpen(true)}
-          className={`${bodyFont.className} flex border-2 border-black px-3 py-2 text-black`}
+          className={`${bodyFont.className} flex border-3 border-black px-3 py-2 text-black bg-white`}
         />
         {isOpen && query && (
           <div className="absolute top-full w-full border-black border-2 mt-1 z-50 rounded-xl">
@@ -61,7 +61,7 @@ export default function SelectTransferCollege({transfer, setTransfer}: Props) {
                     setTransfer(transferCollege);
                     setIsOpen(false);
                   }}
-                  className="px-3 py-2 hover:bg-gray-300 cursor-pointer rounded-xl"
+                  className={`${bodyFont.className} px-3 py-2 bg-white hover:bg-gray-300 text-black cursor-pointer rounded-xl`}
                 >
                   {transferCollege}
                 </div>

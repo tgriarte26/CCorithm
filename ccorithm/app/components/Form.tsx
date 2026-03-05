@@ -25,25 +25,32 @@ export default function Form() {
 
   const handleStart = () => {
     if (!major.trim() || !cc.trim() || !transfer.trim()) {
-      alert("Please select all fields before continuing.")
+      alert("Please select all fields before continuing.");
       return;
     }
 
     const query = new URLSearchParams({ major, cc, transfer }).toString();
-    console.log({major, cc, transfer});
-    router.push(`/perfectGuide?${query}`)
-  }
+    console.log({ major, cc, transfer });
+    router.push(`/perfectGuide?${query}`);
+  };
 
   return (
-    <div>
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center w-full items-start">
-      <SelectMajor topMajor={major} setTopMajor={setMajor}/>
-      <SelectCC community={cc} setCommunity={setCC}/>
-      <SelectTransferCollege transfer={transfer} setTransfer={setTransfer} />
+    <div className="">
+      <div className="grid grid-cols-1 md:grid-cols-3 justify-between gap-8 items-center text-center w-full">
+        <SelectMajor topMajor={major} setTopMajor={setMajor} />
+        <SelectCC community={cc} setCommunity={setCC} />
+        <SelectTransferCollege transfer={transfer} setTransfer={setTransfer} />
+      </div>
+      <div className="mt-5"></div>
+      <div className="justify-center items-center text-center">
+        <button
+          onClick={handleStart}
+          disabled={!major || !cc || !transfer}
+          className={`${bodyFont.className} px-6 py-2 rounded-xl text-black border-3 border-black bg-white select-none`}
+        >
+          Curate the Perfect Guide
+        </button>
+      </div>
     </div>
-      <button onClick={handleStart} disabled={!major || !cc || !transfer} className={`${bodyFont.className} px-6 py-2 rounded-xl text-white border-3 select-none`}>
-        Curate the Perfect Guide
-      </button>
-    </div>
-  )
+  );
 }

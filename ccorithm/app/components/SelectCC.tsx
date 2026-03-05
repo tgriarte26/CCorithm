@@ -48,7 +48,7 @@ export default function SelectMajor({community, setCommunity}: Props) {
             setIsOpen(true);
           }}
           onFocus={() => setIsOpen(true)}
-          className={`${bodyFont.className} flex border-2 border-black px-3 py-2 text-black`}
+          className={`${bodyFont.className} flex border-3 border-black px-3 py-2 text-black bg-white`}
         />
 
         {isOpen && query && (
@@ -62,7 +62,7 @@ export default function SelectMajor({community, setCommunity}: Props) {
                     setCommunity(college)
                     setIsOpen(false);
                   }}
-                  className="px-3 py-2 hover:bg-gray-300 cursor-pointer rounded-xl"
+                  className={`${bodyFont.className} px-3 py-2 bg-white hover:bg-gray-300 text-black cursor-pointer rounded-xl`}
                 >
                   {college}
                 </div>
