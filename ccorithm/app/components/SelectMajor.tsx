@@ -12,6 +12,11 @@ const bodyFont = Onest({
   weight: ["700"],
 });
 
+interface Props {
+    topMajor: string;
+    setTopMajor: (topMajor: string) => void;
+}
+
 const majors = [
   "Business",
   "Computer Science",
@@ -20,7 +25,7 @@ const majors = [
   "Nursing",
 ];
 
-export default function SelectMajor() {
+export default function SelectMajor({topMajor, setTopMajor} : Props) {
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
@@ -55,6 +60,7 @@ export default function SelectMajor() {
                   key={index}
                   onClick={() => {
                     setQuery(major);
+                    setTopMajor(major);
                     setIsOpen(false);
                   }}
                   className="px-3 py-2 hover:bg-gray-300 cursor-pointer rounded-xl"

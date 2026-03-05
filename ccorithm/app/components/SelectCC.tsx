@@ -18,7 +18,12 @@ const colleges = [
   "Long Beach City College",
 ];
 
-export default function SelectMajor() {
+interface Props {
+  community: string;
+  setCommunity: (cc: string) => void;
+}
+
+export default function SelectMajor({community, setCommunity}: Props) {
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
@@ -54,6 +59,7 @@ export default function SelectMajor() {
                   key={index}
                   onClick={() => {
                     setQuery(college);
+                    setCommunity(college)
                     setIsOpen(false);
                   }}
                   className="px-3 py-2 hover:bg-gray-300 cursor-pointer rounded-xl"

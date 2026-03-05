@@ -18,7 +18,12 @@ const transferColleges = [
   "Stanford University",
 ];
 
-export default function SelectTransferCollege() {
+interface Props {
+  transfer: string;
+  setTransfer: (transfer: string) => void;
+}
+
+export default function SelectTransferCollege({transfer, setTransfer}: Props) {
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
@@ -53,6 +58,7 @@ export default function SelectTransferCollege() {
                   key={index}
                   onClick={() => {
                     setQuery(transferCollege);
+                    setTransfer(transferCollege);
                     setIsOpen(false);
                   }}
                   className="px-3 py-2 hover:bg-gray-300 cursor-pointer rounded-xl"
