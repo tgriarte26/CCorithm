@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getTransferGuide, getGenericGuide } from "@/app/data/transferdata";
+import { getTransferGuide, getGenericGuide } from "@/app/data/transferData";
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
