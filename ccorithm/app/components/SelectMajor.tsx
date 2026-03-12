@@ -34,7 +34,7 @@ export default function SelectMajor({topMajor, setTopMajor} : Props) {
   );
 
   return (
-    <div className="flex flex-col w-full justify-center items-center">
+    <div className="flex flex-col w-full items-center">
       <h2
         className={`${bodyFont.className} flex text-center text-black text-xl mb-2`}
       >
