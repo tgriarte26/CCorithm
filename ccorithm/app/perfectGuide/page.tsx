@@ -89,83 +89,114 @@ export default function PerfectGuidePage() {
           Your Transfer Guide
         </h1>
         <p className={`${normalFont.className} text-gray-600 mb-8`}>
-          {guide.communityCollege} → {guide.transferCollege} · {guide.major}
+          <span className="font-bold">{guide.communityCollege}</span> →{" "}
+          <span className="font-bold">{guide.transferCollege}</span> ·{" "}
+          <span className="italic">{guide.major}</span>
         </p>
 
         {/* ── GPA Overview ── */}
         <section className="mb-10 grid grid-cols-1 md:grid-cols-3 gap-4">
           <StatCard label="Minimum GPA" value={guide.minimumGPA.toFixed(2)} />
-          <StatCard label="Avg Accepted GPA" value={guide.averageAcceptedGPA.toFixed(2)} />
-          <StatCard label="Units Required" value={String(guide.totalUnitsRequired)} />
+          <StatCard
+            label="Avg Accepted GPA"
+            value={guide.averageAcceptedGPA.toFixed(2)}
+          />
+          <StatCard
+            label="Units Required"
+            value={String(guide.totalUnitsRequired)}
+          />
         </section>
 
         {/* ── Course Mappings ── */}
-        {guide.courseMappings.length > 0 && (
-          <section className="mb-10">
-            <h2 className={`${headingFont.className} text-2xl text-black mb-4`}>
-              Course Mappings
-            </h2>
-            <div className="overflow-x-auto">
-              <table className="w-full border-collapse border-2 border-black text-left">
-                <thead>
-                  <tr className="bg-[#2d69eb] text-white">
-                    <th className={`${bodyFont.className} px-4 py-3 border border-black`}>CC Course</th>
-                    <th className={`${bodyFont.className} px-4 py-3 border border-black`}>Units</th>
-                    <th className={`${bodyFont.className} px-4 py-3 border border-black`}>University Equivalent</th>
-                    <th className={`${bodyFont.className} px-4 py-3 border border-black`}>Units</th>
-                    <th className={`${bodyFont.className} px-4 py-3 border border-black`}>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {guide.courseMappings.map((mapping, i) => (
-                    <tr key={i} className="even:bg-gray-50">
-                      <td className={`${normalFont.className} px-4 py-2 border border-black`}>{mapping.ccCourse}</td>
-                      <td className={`${normalFont.className} px-4 py-2 border border-black text-center`}>{mapping.ccUnits}</td>
-                      <td className={`${normalFont.className} px-4 py-2 border border-black`}>{mapping.universityEquivalent}</td>
-                      <td className={`${normalFont.className} px-4 py-2 border border-black text-center`}>{mapping.universityUnits}</td>
-                      <td className={`${normalFont.className} px-4 py-2 border border-black`}>
-                        <span className={`px-2 py-1 rounded text-xs font-bold uppercase ${
-                          mapping.status === "required" ? "bg-red-100 text-red-700" :
-                          mapping.status === "recommended" ? "bg-yellow-100 text-yellow-700" :
-                          "bg-gray-100 text-gray-600"
-                        }`}>
+        <section className="mb-10">
+          <h2 className={`${headingFont.className} text-2xl text-black mb-4`}>
+            Course Mappings
+          </h2>
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse border-2 border-black text-left">
+              <thead>
+                <tr className="bg-[#2d69eb] text-white">
+                  <th
+                    className={`${bodyFont.className} px-4 py-3 border border-black`}
+                  >
+                    CC Course
+                  </th>
+                  <th
+                    className={`${bodyFont.className} px-4 py-3 border border-black`}
+                  >
+                    Units
+                  </th>
+                  <th
+                    className={`${bodyFont.className} px-4 py-3 border border-black`}
+                  >
+                    University Equivalent
+                  </th>
+                  <th
+                    className={`${bodyFont.className} px-4 py-3 border border-black`}
+                  >
+                    Units
+                  </th>
+                  <th
+                    className={`${bodyFont.className} px-4 py-3 border border-black`}
+                  >
+                    Status
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {guide.courseMappings.length > 0 ? (
+                  guide.courseMappings.map((mapping, i) => (
+                    <tr key={i} className="bg-white text-black">
+                      <td
+                        className={`${normalFont.className} px-4 py-2 border border-black`}
+                      >
+                        <h1 className="font-bold">{mapping.ccCourse}</h1>
+                      </td>
+                      <td
+                        className={`${normalFont.className} px-4 py-2 border border-black text-center`}
+                      >
+                        <h1 className="font-bold">{mapping.ccUnits}</h1>
+                      </td>
+                      <td
+                        className={`${normalFont.className} px-4 py-2 border border-black`}
+                      >
+                        <h1 className="font-bold">{mapping.universityEquivalent}</h1>
+                      </td>
+                      <td
+                        className={`${normalFont.className} px-4 py-2 border border-black text-center`}
+                      >
+                        <h1 className="font-bold">{mapping.universityUnits}</h1>
+                      </td>
+                      <td
+                        className={`${normalFont.className} px-4 py-2 border border-black`}
+                      >
+                        <span
+                          className={`px-2 py-1 rounded text-xs font-bold uppercase ${
+                            mapping.status === "required"
+                              ? "bg-red-100 text-red-700"
+                              : mapping.status === "recommended"
+                                ? "bg-yellow-100 text-yellow-700"
+                                : "bg-gray-100 text-gray-600"
+                          }`}
+                        >
                           {mapping.status}
                         </span>
                       </td>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </section>
-        )}
-
-        {/* ── Checklist ── */}
-        <section className="mb-10">
-          <h2 className={`${headingFont.className} text-2xl text-black mb-4`}>
-            Transfer Checklist
-          </h2>
-          <div className="space-y-3">
-            {guide.checklist.map((item) => (
-              <div
-                key={item.id}
-                className="flex items-start gap-3 border-2 border-black rounded-xl px-4 py-3"
-              >
-                <span className={`mt-1 px-2 py-0.5 rounded text-xs font-bold uppercase ${
-                  item.priority === "high" ? "bg-red-100 text-red-700" :
-                  item.priority === "medium" ? "bg-yellow-100 text-yellow-700" :
-                  "bg-gray-100 text-gray-600"
-                }`}>
-                  {item.priority}
-                </span>
-                <div>
-                  <p className={`${bodyFont.className} text-black`}>{item.task}</p>
-                  <p className={`${normalFont.className} text-gray-500 text-sm`}>
-                    Deadline: {item.deadline}
-                  </p>
-                </div>
-              </div>
-            ))}
+                  ))
+                ) : (
+                  <tr>
+                    <td
+                      colSpan={5}
+                      className={`${normalFont.className} px-4 py-2 border border-black text-center text-gray-500`}
+                    >
+                      No course mappings available. Check ASSIST.org for your
+                      courses.
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
           </div>
         </section>
 
@@ -189,14 +220,12 @@ export default function PerfectGuidePage() {
   );
 }
 
-// ── Small stat card component ──
 function StatCard({ label, value }: { label: string; value: string }) {
-  const bodyFont = Onest({ subsets: ["latin"], weight: ["700"] });
-  const normalFont = Onest({ subsets: ["latin"], weight: ["400"] });
-
   return (
     <div className="border-3 border-black rounded-xl px-5 py-4 text-center">
-      <p className={`${normalFont.className} text-gray-500 text-sm mb-1`}>{label}</p>
+      <p className={`${normalFont.className} text-gray-500 text-sm mb-1`}>
+        {label}
+      </p>
       <p className={`${bodyFont.className} text-3xl text-[#2d69eb]`}>{value}</p>
     </div>
   );
