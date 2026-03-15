@@ -32,11 +32,11 @@ export default function SelectTransferCollege({transfer, setTransfer}: Props) {
   );
 
   return (
-    <div className="flex flex-col w-full justify-center items-center">
+    <div className="flex flex-col w-full float-left">
       <h2
         className={`${bodyFont.className} flex text-center text-black text-xl mb-2`}
       >
-        Step 3: Select Transfer College
+        Step 1: Select Transfer College
       </h2>
       <div className="relative">
         <input

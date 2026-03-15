@@ -35,13 +35,22 @@ export default function Form() {
   };
 
   return (
-    <div className="">
-      <div className="grid grid-cols-1 md:grid-cols-3 justify-between gap-8 items-center text-center w-full">
-        <SelectMajor topMajor={major} setTopMajor={setMajor} />
-        <SelectCC community={cc} setCommunity={setCC} />
-        <SelectTransferCollege transfer={transfer} setTransfer={setTransfer} />
+    <div>
+      <div className="grid grid-cols-1 justify-between gap-10 items-center text-center w-full">
+        <div className="w-full bg-white p-20">
+          <SelectTransferCollege
+            transfer={transfer}
+            setTransfer={setTransfer}
+          />
+        </div>
+        <div className="w-full bg-white p-20">
+          <SelectCC community={cc} setCommunity={setCC} />
+        </div>
+        <div className="w-full bg-white p-20">
+          <SelectMajor topMajor={major} setTopMajor={setMajor} />
+        </div>
       </div>
-      <div className="mt-5"></div>
+      <div className="mt-10"></div>
       <div className="justify-center items-center text-center">
         <button
           onClick={handleStart}
@@ -50,6 +59,8 @@ export default function Form() {
         >
           Curate the Perfect Guide
         </button>
+        <div className="w-full max-w-6xl grid grid-cols-3 gap-10 items-start">
+        </div>
       </div>
     </div>
   );

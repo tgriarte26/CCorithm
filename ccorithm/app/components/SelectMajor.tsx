@@ -34,11 +34,11 @@ export default function SelectMajor({topMajor, setTopMajor} : Props) {
   );
 
   return (
-    <div className="flex flex-col w-full items-center">
+    <div className="flex flex-col w-full">
       <h2
         className={`${bodyFont.className} flex text-center text-black text-xl mb-2`}
       >
-        Step 1: Select Your Major
+        Step 3: Select Your Major
       </h2>
       <div className="relative">
         <input

@@ -12,8 +12,8 @@ const bodyFont = Onest({
 
 export default function LandingPage() {
     return (
-        <div className="items-center justify-center bg-blue-300">
-            <h1 className={`${bodyFont.className} text-black text-7xl text-center`}>The Best CC Transfer Guide on the Web</h1>
+        <div className="flex items-center justify-center bg-blue-300">
+            <h1 className={`${bodyFont.className} text-black text-7xl text-center max-w-4xl`}>The Best CC Transfer Guide on the Web</h1>
         </div>
     )
 }
