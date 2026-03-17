@@ -411,5 +411,6 @@ export function getGenericGuide(
       `We don't have specific course mappings for ${major} from ${cc} to ${transfer} yet. Check with your counselor.`,
       "This is a generic guide — specific course requirements may vary.",
     ],
+    
   };
 }

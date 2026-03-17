@@ -7,10 +7,9 @@ export default function Home() {
     <div className="min-h-screen bg-zinc-50 flex flex-col items-center">
       <Header />
 
-      <main className="min-h-screen w-full p-10 bg-blue-300">
-        <LandingPage />
+      <main className="min-h-screen w-full bg-blue-500">
 
-        <div className="mt-10">
+        <div className=" mt-2">
           <Form />
         </div>
       </main>

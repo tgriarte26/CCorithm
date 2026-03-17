@@ -32,7 +32,7 @@ export default function SelectMajor({community, setCommunity}: Props) {
   );
 
   return (
-    <div className="flex flex-col w-full items-end">
+    <div className="flex flex-col w-full items-end bg-white p-10 border-5 border-black">
       <h2
         className={`${bodyFont.className} flex text-center text-black text-xl mb-2`}
       >

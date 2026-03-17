@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import SelectMajor from "./SelectMajor";
 import SelectCC from "./SelectCC";
 import SelectTransferCollege from "./SelectTransferCollege";
+import styles from "@/app/Form.module.css";
 
 const headingFont = Onest({
   subsets: ["latin"],
@@ -36,17 +37,19 @@ export default function Form() {
 
   return (
     <div>
-      <div className="grid grid-cols-1 justify-between gap-10 items-center text-center w-full">
-        <div className="w-full bg-white p-20">
+      
+      <div className={`grid grid-cols-1 justify-between items-center text-center w-full ${styles.container}`}>
+        <h1 className={`${bodyFont.className} ${styles.sloganText} text-white text-7xl text-center max-w-4xl p-10`}>The Best CC Transfer Guide on the Web</h1>
+        <div className="w-full p-10">
           <SelectTransferCollege
             transfer={transfer}
             setTransfer={setTransfer}
           />
         </div>
-        <div className="w-full bg-white p-20">
+        <div className="w-full p-10">
           <SelectCC community={cc} setCommunity={setCC} />
         </div>
-        <div className="w-full bg-white p-20">
+        <div className="w-full p-10">
           <SelectMajor topMajor={major} setTopMajor={setMajor} />
         </div>
       </div>
