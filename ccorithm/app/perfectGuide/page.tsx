@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { Onest } from "next/font/google";
 import { TransferGuide } from "@/app/types/guide";
 import Header from "@/app/components/Header";
+import React from "react";
 
 const headingFont = Onest({
   subsets: ["latin"],
@@ -145,47 +146,131 @@ export default function PerfectGuidePage() {
               </thead>
               <tbody className={`${bodyFont.className}`}>
                 {guide.courseMappings.length > 0 ? (
-                  guide.courseMappings.flatMap((mapping, i) =>
-                    mapping.options.flatMap((option, j) =>
-                      option.courses.map((course, k) => (
-                        <tr
-                          key={`${i}-${j}-${k}`}
-                          className="bg-white text-black"
-                        >
-                          {/* CC Course */}
-                          <td className="px-4 py-2 border border-black font-bold">
-                            {course.name}
-                          </td>
-                          {/* CC Units */}
-                          <td className="px-4 py-2 border border-black text-center font-bold">
-                            {course.units}
-                          </td>
-                          {/* University Equivalent */}
-                          <td className="px-4 py-2 border border-black font-bold">
-                            {mapping.universityEquivalent}
-                          </td>
-                          {/* University Units */}
-                          <td className="px-4 py-2 border border-black text-center font-bold">
-                            {mapping.universityUnits}
-                          </td>
-                          {/* Status */}
-                          <td className="px-4 py-2 border border-black">
-                            <span
-                              className={`px-2 py-1 rounded text-xs font-bold uppercase ${
-                                mapping.status === "required"
-                                  ? "bg-red-100 text-red-700"
-                                  : mapping.status === "recommended"
-                                    ? "bg-yellow-100 text-yellow-700"
-                                    : "bg-gray-100 text-gray-600"
-                              }`}
+                  guide.courseMappings.map((mapping, i) => (
+                    <tr key={i} className="bg-white text-black">
+                      {/* CC Course */}
+                      <td className="px-4 py-3 border border-black">
+                        <div className="flex flex-col items-center font-bold w-full">
+                          {mapping.options.map((option, j) => (
+                            <div
+                              key={j}
+                              className="w-full flex flex-col items-center"
                             >
-                              {mapping.status}
-                            </span>
-                          </td>
-                        </tr>
-                      )),
-                    ),
-                  )
+                              {/* OR */}
+                              {j > 0 && (
+                                <span className="text-xs font-bold bg-red-400 border-black border-3 px-3 py-1 rounded m-3 shadow-[2px_2px_0px_rgba(200,0,0,1)]">
+                                  OR
+                                </span>
+                              )}
+
+                              {option.courses.map((course, k) => (
+                                <div
+                                  key={k}
+                                  className="flex flex-col items-center w-full space-y-1"
+                                >
+                                  {/* Course Box */}
+                                  <div className="w-full border-3 border-black bg-blue-100 text-blue-800 px-4 py-2 rounded text-center font-bold shadow-[4px_4px_0px_rgba(0,0,0,1)]">
+                                    {(() => {
+                                      // Split the course name by the first dash
+                                      const dashIndex =
+                                        course.name.indexOf(" - ");
+                                      if (dashIndex === -1) {
+                                        // No dash found, just show the whole name
+                                        return course.name;
+                                      }
+
+                                      const code = course.name.slice(
+                                        0,
+                                        dashIndex,
+                                      ); // Include " -"
+                                      const rest = course.name.slice(
+                                        dashIndex - 1 + 2,
+                                      ); // Text after dash
+
+                                      return (
+                                        <>
+                                          <span className="text-black px-1 rounded">
+                                            {code}
+                                          </span>
+                                          {/* Rest of the course name */}
+                                          <span>{rest}</span>
+                                        </>
+                                      );
+                                    })()}
+                                  </div>
+
+                                  {/* AND */}
+                                  {k < option.courses.length - 1 && (
+                                    <span className="text-xs font-bold bg-green-400 border-black border-2 px-3 py-1 rounded m-3 shadow-[2px_2px_0px_rgba(0,200,0,1)]">
+                                      AND
+                                    </span>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+                          ))}
+                        </div>
+                      </td>
+
+                      {/* Units */}
+                      <td className="px-4 py-3 border border-black text-center font-bold">
+                        {mapping.options[0].courses.reduce(
+                          (sum, c) => sum + c.units,
+                          0,
+                        )}
+                      </td>
+
+                      {/* University Equivalent */}
+                      <td className="px-4 py-3 border border-black font-bold">
+                        <div className="w-full border-3 border-black bg-blue-100 text-blue-800 px-4 py-2 rounded text-center font-bold shadow-[4px_4px_0px_rgba(0,0,0,1)]">
+                          {(() => {
+                            // Optional: if you want to highlight part before dash like courses
+                            const dashIndex =
+                              mapping.universityEquivalent.indexOf(" - ");
+                            if (dashIndex === -1) {
+                              return mapping.universityEquivalent;
+                            }
+
+                            const code = mapping.universityEquivalent.slice(
+                              0,
+                              dashIndex,
+                            ); // text before dash
+                            const rest =
+                              mapping.universityEquivalent.slice(dashIndex); // include dash and after
+
+                            return (
+                              <>
+                                <span className="text-black px-1 rounded">
+                                  {code}
+                                </span>
+                                <span>{rest}</span>
+                              </>
+                            );
+                          })()}
+                        </div>
+                      </td>
+
+                      {/* University Units */}
+                      <td className="px-4 py-3 border border-black text-center font-bold">
+                        {mapping.universityUnits}
+                      </td>
+
+                      {/* Status */}
+                      <td className="px-4 py-3 border border-black">
+                        <span
+                          className={`flex px-2 py-1 rounded text-xs font-bold uppercase justify-center items-center border-black border-3 shadow-[2px_2px_0px_rgba(0,0,0,1)] ${
+                            mapping.status === "required"
+                              ? "bg-red-500 text-white"
+                              : mapping.status === "recommended"
+                                ? "bg-yellow-500 text-white"
+                                : "bg-gray-100 text-gray-600"
+                          }`}
+                        >
+                          {mapping.status}
+                        </span>
+                      </td>
+                    </tr>
+                  ))
                 ) : (
                   <tr>
                     <td

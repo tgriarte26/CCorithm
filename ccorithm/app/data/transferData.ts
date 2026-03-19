@@ -23,14 +23,14 @@ const transferDatabase: Record<string, TransferGuide> = {
                     {
                         label: "Take CS 1 + CS 2",
                         courses: [
-                            { name: "CS 1 - Introduction to Computer Science I", units: 4 },
-                            { name: "CS 2 - Introduction to Computer Science II", units: 4 },
+                            { name: "CSCI 1 - Problem Solving and Program Design Using C++", units: 4 },
+                            { name: "CSCI 2 - Introduction to Data Structures", units: 4 },
                         ],
                     },
                     {
                         label: "Take CS 30",
                         courses: [
-                            { name: "CS 30 - Introduction to Computer Science", units: 3 },
+                            { name: "CS 30 - Advanced Programming in C++", units: 3 },
                         ],
                     },
                 ],
@@ -41,9 +41,9 @@ const transferDatabase: Record<string, TransferGuide> = {
                 status: "required",
                 options: [
                     {
-                        label: "Take CS 3",
+                        label: "Take CS 2",
                         courses: [
-                            { name: "CS 3 - Data Structures", units: 3 },
+                            { name: "CS 2 - Introduction to Data Structures", units: 3 },
                         ],
                     },
                 ],
@@ -55,9 +55,23 @@ const transferDatabase: Record<string, TransferGuide> = {
                 notes: "Check ASSIST.org for the latest articulation",
                 options: [
                     {
-                        label: "Take CS 21",
+                        label: "Take CS 16",
                         courses: [
-                            { name: "CS 21 - Computer Organization & Assembly Language", units: 3 },
+                            { name: "CSCI 16 - Assembly Language Programming for the x86 (IBM PC) Processors", units: 3 },
+                        ],
+                    },
+                ],
+            },
+            {
+                universityEquivalent: "COM SCI 35L - Software Construction Laboratory",
+                universityUnits: 5,
+                status: "recommended",
+                notes: "Check ASSIST.org for the latest articulation",
+                options: [
+                    {
+                        label: "Take CS 16",
+                        courses: [
+                            { name: "CSCI 16 - Assembly Language Programming for the x86 (IBM PC) Processors", units: 3 },
                         ],
                     },
                 ],
