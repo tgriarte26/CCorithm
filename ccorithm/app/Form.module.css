@@ -8,3 +8,7 @@
 .sloganText {
     -webkit-text-stroke: 3px black;
 }
+
+.headerText {
+    -webkit-text-stroke: 1.5px black;
+}

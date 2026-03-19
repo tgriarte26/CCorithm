@@ -1,5 +1,4 @@
 import Header from "./components/Header";
-import LandingPage from "./LandingPage";
 import Form from "./components/Form";
 
 export default function Home() {

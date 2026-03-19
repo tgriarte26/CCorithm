@@ -34,7 +34,7 @@ export default function SelectMajor({topMajor, setTopMajor} : Props) {
   );
 
   return (
-    <div className="flex flex-col w-full bg-white p-10 border-5 border-black">
+    <div className="flex flex-col w-full justify-center items-center bg-white p-10 border-5 border-black shadow-[10px_10px_0px_rgba(0,0,0,1)]">
       <h2
         className={`${bodyFont.className} flex text-center text-black text-xl mb-2`}
       >
@@ -43,14 +43,14 @@ export default function SelectMajor({topMajor, setTopMajor} : Props) {
       <div className="relative">
         <input
           type="text"
-          placeholder="Search"
+          placeholder="ex. Computer Science"
           value={query}
           onChange={(e) => {
             setQuery(e.target.value);
             setIsOpen(true);
           }}
           onFocus={() => setIsOpen(true)}
-          className={`${bodyFont.className} flex border-3 border-black px-3 py-2 text-black bg-white`}
+          className={`${bodyFont.className} flex border-3 border-black px-3 py-2 text-black bg-white shadow-[4px_4px_0px_rgba(0,0,0,1)]`}
         />
         {isOpen && query && (
           <div className="absolute top-full w-full border-black border-2 mt-1 z-50 rounded-xl">
