@@ -137,12 +137,12 @@ export default function PerfectGuidePage() {
                 {guide.courseMappings.length > 0 ? (
                   guide.courseMappings.map((mapping, i) => (
                     <tr key={i} className="bg-white text-black">
-                      <td className="px-4 py-3 border border-black">
-                        <div className="flex flex-col items-center font-bold w-full">
+                      <td className="px-4 py-3 border border-black relative">
+                        <div className="flex flex-col items-center font-bold w-full relative">
                           {mapping.options.map((option, j) => (
                             <div
                               key={j}
-                              className="w-full flex flex-col items-center"
+                              className="w-full flex flex-col items-center mr-5"
                             >
                               {j > 0 && (
                                 <span className="text-xs font-bold bg-red-400 border-black border-3 px-3 py-1 rounded m-3 shadow-[2px_2px_0px_rgba(200,0,0,1)]">
@@ -150,61 +150,69 @@ export default function PerfectGuidePage() {
                                 </span>
                               )}
 
-                              {option.courses.map((course, k) => (
-                                <div
-                                  key={k}
-                                  className="flex flex-col items-center w-full space-y-1"
-                                >
+                              {option.courses.length > 0 ? (
+                                option.courses.map((course, k) => (
+                                  <div
+                                    key={k}
+                                    className="flex flex-col items-center w-full space-y-1"
+                                  >
+                                    <div className="relative w-full border-3 border-black bg-blue-100 text-blue-800 px-4 py-2 rounded font-bold shadow-[4px_4px_0px_rgba(0,0,0,1)] flex justify-between items-center">
+                                      <div className="flex-1">
+                                        {(() => {
+                                          const dashIndex =
+                                            course.name.indexOf(" - ");
+                                          if (dashIndex === -1)
+                                            return course.name;
 
-                                  <div className="relative w-full border-3 border-black bg-blue-100 text-blue-800 px-4 py-2 rounded font-bold shadow-[4px_4px_0px_rgba(0,0,0,1)] flex justify-between items-center">
-  
-                                    <div className="flex-1">
-                                      {(() => {
-                                        const dashIndex =
-                                          course.name.indexOf(" - ");
-                                        if (dashIndex === -1)
-                                          return course.name;
+                                          const code = course.name.slice(
+                                            0,
+                                            dashIndex,
+                                          );
+                                          const rest = course.name.slice(
+                                            dashIndex + 1,
+                                          );
+                                          return (
+                                            <>
+                                              <span className="text-black pr-1">
+                                                {code}
+                                              </span>
+                                              <span>{rest}</span>
+                                            </>
+                                          );
+                                        })()}
+                                      </div>
 
-                                        const code = course.name.slice(
-                                          0,
-                                          dashIndex,
-                                        );
-                                        const rest = course.name.slice(
-                                          dashIndex + 1,
-                                        );
-                                        return (
-                                          <>
-                                            <span className="text-black rounded pr-1">
-                                              {code}
-                                            </span>
-                                            <span>{rest}</span>
-                                          </>
-                                        );
-                                      })()}
+                                      <div className="w-px bg-gray-400 mx-3 h-20" />
+
+                                      <div className="text-xs px-2 py-0.5 bg-gray-300 text-gray-700 rounded shadow-[1px_1px_0px_rgba(0,0,0,0.5)]">
+                                        {course.units} units
+                                      </div>
                                     </div>
 
-                                    <div className="w-px bg-gray-400 mx-3 h-20" />
-
-                                    <div className="text-xs px-2 py-0.5 bg-gray-300 text-gray-700 rounded shadow-[1px_1px_0px_rgba(0,0,0,0.5)]">
-                                      {course.units} units
-                                    </div>
+                                    {k < option.courses.length - 1 && (
+                                      <span className="text-xs font-bold bg-green-400 border-black border-2 px-3 py-1 rounded m-3 shadow-[2px_2px_0px_rgba(0,200,0,1)]">
+                                        AND
+                                      </span>
+                                    )}
                                   </div>
-
-                                  {k < option.courses.length - 1 && (
-                                    <span className="text-xs font-bold bg-green-400 border-black border-2 px-3 py-1 rounded m-3 shadow-[2px_2px_0px_rgba(0,200,0,1)]">
-                                      AND
-                                    </span>
-                                  )}
+                                ))
+                              ) : (
+                                <div className="w-full border-3 border-dashed border-gray-400 bg-gray-100 text-gray-500 px-4 py-7 rounded text-center font-bold ">
+                                  Take course at university
                                 </div>
-                              ))}
+                              )}
                             </div>
                           ))}
+                          <div className="absolute -right-9 top-1/2 -translate-y-1/2 z-10">
+                            <div className="bg-blue-500 text-white px-2 py-1 rounded border-2 border-black shadow-[2px_2px_0px_rgba(0,0,0,1)]">
+                              →
+                            </div>
+                          </div>
                         </div>
                       </td>
 
                       <td className="px-4 py-3 border border-black font-bold">
-                        <div className="relative w-full border-3 border-black bg-blue-100 text-blue-800 px-4 py-2 rounded text-left font-bold shadow-[4px_4px_0px_rgba(0,0,0,1)] flex justify-between items-center">
- 
+                        <div className="relative w-full border-3 border-black bg-blue-100 text-blue-800 px-4 py-2 rounded text-left font-bold shadow-[4px_4px_0px_rgba(0,0,0,1)] flex justify-between items-center ml-2">
                           <div className="flex-1">
                             {(() => {
                               const dashIndex =
@@ -230,9 +238,7 @@ export default function PerfectGuidePage() {
                             })()}
                           </div>
 
-
                           <div className="w-px bg-gray-400 mx-3 h-20" />
-
 
                           <div className="text-xs px-2 py-0.5 bg-gray-300 text-gray-700 rounded shadow-[1px_1px_0px_rgba(0,0,0,0.5)]">
                             {mapping.universityUnits} units
