@@ -24,13 +24,13 @@ const transferDatabase: Record<string, TransferGuide> = {
                         label: "Take CS 1 + CS 2",
                         courses: [
                             { name: "CSCI 1 - Problem Solving and Program Design Using C++", units: 4 },
-                            { name: "CSCI 2 - Introduction to Data Structures", units: 4 },
+                            { name: "CSCI 2 - Introduction to Data Structures", units: 5 },
                         ],
                     },
                     {
                         label: "Take CS 30",
                         courses: [
-                            { name: "CS 30 - Advanced Programming in C++", units: 3 },
+                            { name: "CS 30 - Advanced Programming in C++", units: 4 },
                         ],
                     },
                 ],
@@ -43,7 +43,7 @@ const transferDatabase: Record<string, TransferGuide> = {
                     {
                         label: "Take CS 2",
                         courses: [
-                            { name: "CS 2 - Introduction to Data Structures", units: 3 },
+                            { name: "CS 2 - Introduction to Data Structures", units: 5 },
                         ],
                     },
                 ],
@@ -71,7 +71,7 @@ const transferDatabase: Record<string, TransferGuide> = {
                     {
                         label: "Take CS 16",
                         courses: [
-                            { name: "CSCI 16 - Assembly Language Programming for the x86 (IBM PC) Processors", units: 3 },
+                            
                         ],
                     },
                 ],
