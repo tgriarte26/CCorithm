@@ -1,4 +1,5 @@
 "use client";
+export const dynamic = "force-dynamic";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Onest } from "next/font/google";
@@ -57,7 +58,7 @@ export default function PerfectGuidePage() {
     };
 
     fetchGuide();
-  }, [searchParams]);
+  }, [searchParams.toString()]);
 
   if (loading) {
     return (
@@ -134,7 +135,7 @@ export default function PerfectGuidePage() {
                 </tr>
               </thead>
               <tbody className={`${bodyFont.className}`}>
-                {guide.courseMappings.length > 0 ? (
+                {guide.courseMappings?.length > 0 ? (
                   guide.courseMappings.map((mapping, i) => (
                     <tr key={i} className="bg-white text-black">
                       <td className="px-4 py-3 border border-black">
@@ -271,7 +272,7 @@ export default function PerfectGuidePage() {
           </div>
         </section>
 
-        {guide.tips.length > 0 && (
+        {guide.tips?.length > 0 && (
           <section className="mb-10">
             <h2 className={`${headingFont.className} text-2xl text-black mb-4`}>
               Tips
