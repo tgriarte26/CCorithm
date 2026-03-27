@@ -4,17 +4,22 @@ export interface CCCourse {
     units: number;
 }
 
+export interface UniversityCourse {
+    name: string;
+    units: number;
+}
+
 // ─── Course Transfer Mapping ───
-// Each mapping represents ONE university course requirement.
-// "options" lists the different ways a student can satisfy it.
 export interface CourseMapping {
-    universityEquivalent: string;
-    universityUnits: number;
+    universityEquivalent: {
+        label?: string;
+        courses: UniversityCourse[];   
+    }[];
     status: "required" | "recommended" | "elective";
     notes?: string;
     options: {
-        label: string;         // e.g. "Take CS 1 + CS 2" or "Take CS 30"
-        courses: CCCourse[];   // the CC courses needed for this option
+        label: string;     
+        courses: CCCourse[];
     }[];
 }
 

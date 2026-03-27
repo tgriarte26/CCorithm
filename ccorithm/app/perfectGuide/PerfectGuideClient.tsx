@@ -211,38 +211,73 @@ export default function PerfectGuidePage() {
                         </div>
                       </td>
 
-                      <td className="px-4 py-3 border border-black font-bold">
-                        <div className="relative w-full border-3 border-black bg-blue-100 text-blue-800 px-4 py-2 rounded text-left font-bold shadow-[4px_4px_0px_rgba(0,0,0,1)] flex justify-between items-center ml-2">
-                          <div className="flex-1">
-                            {(() => {
-                              const dashIndex =
-                                mapping.universityEquivalent.indexOf(" - ");
-                              if (dashIndex === -1)
-                                return mapping.universityEquivalent;
+                      <td className="px-4 py-3 border border-black">
+                        <div className="flex flex-col items-center font-bold w-full">
+                          {mapping.universityEquivalent.map((group, j) => (
+                            <div
+                              key={j}
+                              className="w-full flex flex-col items-center"
+                            >
+                              {/* OR between groups */}
+                              {j > 0 && (
+                                <span className="text-xs font-bold bg-red-400 border-black border-2 px-3 py-1 rounded m-3 shadow-[2px_2px_0px_rgba(200,0,0,1)]">
+                                  OR
+                                </span>
+                              )}
 
-                              const code = mapping.universityEquivalent.slice(
-                                0,
-                                dashIndex,
-                              );
-                              const rest = mapping.universityEquivalent.slice(
-                                dashIndex + 1,
-                              );
-                              return (
-                                <>
-                                  <span className="text-black rounded pr-1">
-                                    {code}
-                                  </span>
-                                  <span>{rest}</span>
-                                </>
-                              );
-                            })()}
-                          </div>
+                              {/* Courses inside group (AND) */}
+                              {group.courses.map((course, k) => (
+                                <div
+                                  key={k}
+                                  className="flex flex-col items-center w-full space-y-1 ml-3 pl-1"
+                                >
+                                  <div className="relative w-full border-3 border-black bg-green-100 text-green-800 px-4 py-2 mr-auto rounded font-bold shadow-[4px_4px_0px_rgba(0,0,0,1)] flex justify-between items-center">
+                                    {/* Course Name */}
+                                    <div className="flex-1">
+                                      {(() => {
+                                        const dashIndex =
+                                            course.name.indexOf(" - ");
+                                          if (dashIndex === -1)
+                                            return course.name;
 
-                          <div className="w-px bg-gray-400 mx-3 h-20" />
+                                          const code = course.name.slice(
+                                            0,
+                                            dashIndex,
+                                          );
+                                          const rest = course.name.slice(
+                                            dashIndex + 1,
+                                          );
+                                          return (
+                                            <>
+                                              <span className="text-black pr-1">
+                                                {code}
+                                              </span>
+                                              <span>{rest}</span>
+                                            </>
+                                          );
+                                      })()}
+                                    </div>
 
-                          <div className="text-xs px-2 py-0.5 bg-gray-300 text-gray-700 rounded shadow-[1px_1px_0px_rgba(0,0,0,0.5)]">
-                            {mapping.universityUnits} units
-                          </div>
+                                    {/* Divider */}
+                                    <div className="w-px bg-gray-400 mx-3 h-20" />
+
+                                    {/* Units */}
+                                    <div className="text-xs px-2 py-0.5 bg-gray-300 text-gray-700 rounded shadow-[1px_1px_0px_rgba(0,0,0,0.5)]">
+                                      {course.units}{" "}
+                                      {course.units === 1 ? "unit" : "units"}
+                                    </div>
+                                  </div>
+
+                                  {/* AND between courses (inside same group) */}
+                                  {k < group.courses.length - 1 && (
+                                    <span className="text-xs font-bold bg-green-400 border-black border-2 px-3 py-1 rounded m-3 shadow-[2px_2px_0px_rgba(0,200,0,1)]">
+                                      AND
+                                    </span>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+                          ))}
                         </div>
                       </td>
 
