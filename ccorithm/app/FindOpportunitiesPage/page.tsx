@@ -92,13 +92,13 @@ export default function FindOpportunitiesPage() {
                   <a href={`${card.link}`} target="_blank" className="inline-block mt-3 border-3 px-7 py-1 rounded-xl text-xl font-bold bg-white hover:bg-black hover:text-white">
                     Website
                   </a>
-                  <h2 className={`ml-5 inline-block font-bold text-red-500 text-xl`}>
+                  <h2 className={`inline-block mt-3 ml-3 border-3 px-5 py-1 rounded-xl text-xl font-bold text-white bg-red-500`}>
                       {!hasDeadline 
                         ? "No deadline"
                         : days === null
                         ? "Due today"
                         : days > 0
-                        ? `${days} days left`
+                        ? `${days} days left `
                         : `${Math.abs(days)} days overdue`}
                   </h2>
                 </div>

@@ -1,0 +1,6 @@
+.container {
+    min-height:100%;
+    background: 
+    url('data:image/svg+xml;utf8,<svg style="transform:rotate(45deg)" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 60 60"><text x="0" y="25" fill="%23000">Ccorithm </text></svg>') 
+    0 0/50px 50px;
+}

@@ -22,10 +22,10 @@ export default function ResourcesPage() {
     <div className="min-h-screen flex bg-blue-500 ">
       <main className={`w-full ${styles.container}`}>
         <Header />
-        <div className="max-w-3xs mx-auto my-5 px-2 py-2 bg-white rounded-2xl border-5 border-black">
+        <div className="max-w-3xs mx-auto my-5 px-2 py-2 bg-white rounded-2xl border-5 border-black shadow-[5px_5px_0px_rgba(0,0,0,1)]">
           {/* ── Title ── */}
           <h1
-            className={`${headingFont.className} ${styles.headerText} text-4xl text-black mb-1 text-center`}
+            className={`${headingFont.className} ${styles.headerText} text-4xl text-black mb-1 text-center `}
           >
             Resources
           </h1>
@@ -39,19 +39,18 @@ export default function ResourcesPage() {
               Find Opportunities
             </h2>
             <p className="mt-2 text-center">
-              Where can find work, volunteer, or internship opportunities!
+              Where you can find work, volunteer, or internship opportunities!
             </p>
           </Link>
           <Link
             className={`${normalFont.className} flex-1 max-w-xl flex flex-col justify-center items-center text-gray-900 border-5 p-5 rounded-xl bg-white shadow-[5px_5px_0px_rgba(0,0,0,1)]`}
-            href="/FindOpportunitiesPage"
+            href="/AdmissionDataPage"
           >
             <h2 className={`${bodyFont.className} text-3xl text-black`}>
-              Transfer Essay Guide
+              Admission Data
             </h2>
             <p className="mt-2 text-center">
-              Find out what types of essays Admission Officers want to see!
-            </p>
+              The best websites to find admission data information!</p>
           </Link>
         </div>
       </main>
