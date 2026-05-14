@@ -12,8 +12,8 @@ const transferDatabase: Record<string, TransferGuide> = {
       communityCollege: "El Camino College",
       transferCollege: "University of California, Los Angeles (UCLA)",
       minimumGPA: 3.4,
-      averageAcceptedGPA: 3.8,
-      totalUnitsRequired: 90,
+      averageAcceptedGPA: 4.0,
+      totalUnitsRequired: 60,
       courseMappings: [
         {
           universityEquivalent: [
@@ -541,9 +541,9 @@ const transferDatabase: Record<string, TransferGuide> = {
         },
       ],
       tips: [
-        "CSULB Engineering is impacted — complete ALL major-prep courses before applying.",
-        "A 3.0+ GPA makes you competitive; 2.5 is the bare minimum.",
-        "Check ASSIST.org for the most current articulation agreements.",
+        "Maintain a 4.0 GPA for Computer Science as it is heavily impacted.",
+        "Extracurriculars: Computer Science Club, Build Websites for businesses, Freelance Projects.",
+        "Tell a story with PIQs related to your love for Computer Science."
       ],
     },
 };
